@@ -18,8 +18,8 @@ Yii::setAlias('@tests', realpath(__DIR__.'/../../tests'));
 /**
  * Setting url aliases
  */
-Yii::setAlias('@frontendUrl', env('FRONTEND_URL'));
-Yii::setAlias('@backendUrl', env('BACKEND_URL'));
+Yii::setAlias('@frontendUrl', 'http://www.seala.com');//env('FRONTEND_URL')
+Yii::setAlias('@backendUrl', 'http://www.sealb.com');
 Yii::setAlias('@storageUrl', env('STORAGE_URL'));
 
 

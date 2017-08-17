@@ -1,10 +1,12 @@
 <?php
 $config = [
-    'name'=>'Yii2 Starter Kit',
+    'name'=>'运营管理系统',
     'vendorPath'=>dirname(dirname(__DIR__)).'/vendor',
     'extensions' => require(__DIR__ . '/../../vendor/yiisoft/extensions.php'),
-    'sourceLanguage'=>'en-US',
-    'language'=>'en-US',
+//    'sourceLanguage'=>'en-US',
+    'sourceLanguage'=>'zh-CN',
+    'language'=>'zh-CN',
+//    'language'=>'en-US',
     'bootstrap' => ['log'],
     'components' => [
 
@@ -157,6 +159,7 @@ $config = [
             'zh-CN' => '简体中文',
         ],
     ],
+
 ];
 
 if (YII_ENV_PROD) {
