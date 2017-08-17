@@ -1,8 +1,6 @@
 <?php
-
 namespace frontend\modules\user\models;
 
-use common\models\User;
 use yii\base\Model;
 use Yii;
 use yii\web\JsExpression;
@@ -12,31 +10,13 @@ use yii\web\JsExpression;
  */
 class AccountForm extends Model
 {
-    /**
-     * @var string
-     */
     public $username;
-    /**
-     * @var string
-     */
     public $email;
-    /**
-     * @var string
-     */
     public $password;
-    /**
-     * @var string
-     */
     public $password_confirm;
 
-    /**
-     * @var User
-     */
     private $user;
 
-    /**
-     * @param $user
-     */
     public function setUser($user)
     {
         $this->user = $user;
@@ -53,7 +33,7 @@ class AccountForm extends Model
             ['username', 'filter', 'filter' => 'trim'],
             ['username', 'required'],
             ['username', 'unique',
-                'targetClass' => User::class,
+                'targetClass' => '\common\models\User',
                 'message' => Yii::t('frontend', 'This username has already been taken.'),
                 'filter' => function ($query) {
                     $query->andWhere(['not', ['id' => Yii::$app->user->getId()]]);
@@ -64,7 +44,7 @@ class AccountForm extends Model
             ['email', 'required'],
             ['email', 'email'],
             ['email', 'unique',
-                'targetClass' => User::class,
+                'targetClass' => '\common\models\User',
                 'message' => Yii::t('frontend', 'This email has already been taken.'),
                 'filter' => function ($query) {
                     $query->andWhere(['not', ['id' => Yii::$app->user->getId()]]);
@@ -74,11 +54,11 @@ class AccountForm extends Model
             [
                 'password_confirm',
                 'required',
-                'when' => function ($model) {
+                'when' => function($model) {
                     return !empty($model->password);
                 },
                 'whenClient' => new JsExpression("function (attribute, value) {
-                    return $('#accountform-password').val().length > 0;
+                    return $('#caccountform-password').val().length > 0;
                 }")
             ],
             ['password_confirm', 'compare', 'compareAttribute' => 'password', 'skipOnEmpty' => false],
@@ -86,9 +66,6 @@ class AccountForm extends Model
         ];
     }
 
-    /**
-     * @return array
-     */
     public function attributeLabels()
     {
         return [
@@ -99,9 +76,6 @@ class AccountForm extends Model
         ];
     }
 
-    /**
-     * @return bool
-     */
     public function save()
     {
         $this->user->username = $this->username;

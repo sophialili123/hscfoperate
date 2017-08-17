@@ -1,15 +1,11 @@
 # Env
 /.env
 
-# Composer
+# composer
 /vendor
 composer.phar
-
-# JS
-node_modules
-spa/npm-debug.log
-spa/yarn-error.log
-
+## remove in production!
+composer.lock
 
 # IDE
 .idea
@@ -30,6 +26,3 @@ phpunit.phar
 
 # Vagrant
 /.vagrant
-
-# Tests
-tests/codeception/*/_support/_generated/*

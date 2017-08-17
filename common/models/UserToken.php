@@ -28,6 +28,14 @@ class UserToken extends ActiveRecord
     const TYPE_PASSWORD_RESET = 'password_reset';
 
     /**
+     * @return string
+     */
+    function __toString()
+    {
+        return $this->token;
+    }
+
+    /**
      * @inheritdoc
      */
     public static function tableName()
@@ -124,12 +132,12 @@ class UserToken extends ActiveRecord
             'expire_at' => $duration ? time() + $duration : null
         ]);
     }
-
+    
     /**
-     * @return string
+     * @return UsertokenQuery
      */
-    public function __toString()
+    public static function find()
     {
-        return $this->token;
+        return new UserTokenQuery(get_called_class());
     }
 }

@@ -5,7 +5,6 @@ namespace common\behaviors;
 use yii\base\Behavior;
 use yii\base\Controller;
 use Yii;
-use yii\filters\AccessControl;
 
 /**
  * Class GlobalAccessBehavior
@@ -23,7 +22,7 @@ class GlobalAccessBehavior extends Behavior
     /**
      * @var string
      */
-    public $accessControlFilter = AccessControl::class;
+    public $accessControlFilter = 'yii\filters\AccessControl';
 
     /**
      * @var callable a callback that will be called if the access should be denied
@@ -50,9 +49,6 @@ class GlobalAccessBehavior extends Behavior
         ];
     }
 
-    /**
-     * @inheritdoc
-     */
     public function beforeAction()
     {
         Yii::$app->controller->attachBehavior('access', [

@@ -156,7 +156,7 @@ class User extends ActiveRecord implements IdentityInterface
     {
         return static::find()
             ->active()
-            ->andWhere(['access_token' => $token])
+            ->andWhere(['access_token' => $token, 'status' => self::STATUS_ACTIVE])
             ->one();
     }
 
@@ -164,13 +164,13 @@ class User extends ActiveRecord implements IdentityInterface
      * Finds user by username
      *
      * @param string $username
-     * @return User|array|null
+     * @return static|null
      */
     public static function findByUsername($username)
     {
         return static::find()
             ->active()
-            ->andWhere(['username' => $username])
+            ->andWhere(['username' => $username, 'status' => self::STATUS_ACTIVE])
             ->one();
     }
 
@@ -178,7 +178,7 @@ class User extends ActiveRecord implements IdentityInterface
      * Finds user by username or email
      *
      * @param string $login
-     * @return User|array|null
+     * @return static|null
      */
     public static function findByLogin($login)
     {
