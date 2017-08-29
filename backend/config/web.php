@@ -43,11 +43,11 @@ $config = [
             'defaultRoute'=>'i18n-message/index'
         ],
         'admin' => [
-            'class' => 'mdm\admin\Module',
+            'class' => 'izyue\admin\Module',
         ],
     ],
     'as access' => [
-        'class' => 'mdm\admin\components\AccessControl',
+        'class' => 'izyue\admin\components\AccessControl',
         'allowActions' => [
             //这里是允许访问的action，不受权限控制
             //controller/action
@@ -55,7 +55,7 @@ $config = [
         ]
     ],
     'aliases' => [
-        '@mdm/admin' => '@vendor/mdmsoft/yii2-admin',
+        '@izyue/admin' => '@vendor/izyue/yii2-admin',
     ],
     'as globalAccess'=>[
         'class'=>'\common\behaviors\GlobalAccessBehavior',
@@ -86,7 +86,7 @@ $config = [
             [
                 'controllers'=>['user'],
                 'allow' => true,
-                'roles' => ['administrator'],
+                'roles' => ['admin'],
             ],
             [
                 'controllers'=>['user'],
