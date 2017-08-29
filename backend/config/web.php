@@ -2,7 +2,7 @@
 $config = [
     'homeUrl'=>Yii::getAlias('@backendUrl'),
     'controllerNamespace' => 'backend\controllers',
-    'defaultRoute'=>'timeline-event/index',
+    'defaultRoute'=>'/admin/assignment/index',//默认首页
     'controllerMap'=>[
         'file-manager-elfinder' => [
             'class' => 'mihaildev\elfinder\Controller',
@@ -44,6 +44,11 @@ $config = [
         ],
         'admin' => [
             'class' => 'izyue\admin\Module',
+//            'layout' => 'left-menu',
+            'layout' => '@app/views/layouts/main.php',
+        ],
+        'gridview' =>  [
+            'class' => '\kartik\grid\Module'
         ],
     ],
     'as access' => [
