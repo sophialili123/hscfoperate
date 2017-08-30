@@ -43,6 +43,7 @@ $style = <<<CSS
 .twt-category{
     margin-bottom: 0;
 }
+
 CSS;
 $this->registerCss($style);
 
@@ -127,7 +128,7 @@ function initMenu($menuArray, $controllerName, $isSubUrl, $isShowIcon = false)
             $isSubMenu = isSubUrl($menuArray, $route);
         }
         if ($isSubMenu) {
-            $class = ' active dcjq-parent';
+            $class = ' active treeview';
         } else {
             $class = '';
         }
@@ -135,7 +136,7 @@ function initMenu($menuArray, $controllerName, $isSubUrl, $isShowIcon = false)
 
         if (empty($menuArray['data']['hide'])) {
             if (isset($menuArray['items'])) {
-                echo '<li class="sub-menu dcjq-parent-li">';
+                echo '<li class="treeview">';
             } else {
                 echo '<li class="' . $class . '">';
             }
@@ -143,10 +144,10 @@ function initMenu($menuArray, $controllerName, $isSubUrl, $isShowIcon = false)
 
             echo '<a href="' . $url . '"  class="' . $class . '">'
                 . ($menuArray['data']['icon'] ? '<i class="fa ' . $menuArray['data']['icon'] . '"></i>' : '') . '<span>'
-                . $menuArray['label'] . '</span><span class="dcjq-icon"></span></a>';
+                . $menuArray['label'] . '</span><span class="fa fa-angle-left pull-right"></span></a>';
 
             if (isset($menuArray['items'])) {
-                echo '<ul class="nav nav-second-level collapse in">';
+                echo '<ul class="treeview-menu menu-open">';
                 foreach ($menuArray['items'] as $item) {
 
                     echo initMenu($item, $controllerName, $isSubUrl);
@@ -217,6 +218,31 @@ function initMenu($menuArray, $controllerName, $isSubUrl, $isShowIcon = false)
                 ?>
 
             </ul>
+
+<!--            <ul class="sidebar-menu"> 原生态菜单连接-->
+<!--                            <li class="treeview">-->
+<!--                                <a href="#">-->
+<!--                                    <i class="fa fa-gears"></i> <span>权限控制</span>-->
+<!--                                    <i class="fa fa-angle-left pull-right"></i>-->
+<!--                                </a>-->
+<!---->
+<!--                                <ul class="treeview-menu">-->
+<!--                                    <li><a href="/user"><i class="fa fa-user-circle-o"></i> 后台用户</a></li>-->
+<!--                                    <li class="treeview">-->
+<!--                                        <a href="/admin/role">-->
+<!--                                            <i class="fa fa-circle-o"></i> 权限 <i class="fa fa-angle-left pull-right"></i>-->
+<!--                                        </a>-->
+<!--                                        <ul class="treeview-menu">-->
+<!--                                            <li><a href="/admin/route"><i class="fa fa-circle-o"></i> 路由</a></li>-->
+<!--                                            <li><a href="/admin/permission"><i class="fa fa-circle-o"></i> 权限</a></li>-->
+<!--                                            <li><a href="/admin/role"><i class="fa fa-circle-o"></i> 角色</a></li>-->
+<!--                                            <li><a href="/admin/assignment"><i class="fa fa-circle-o"></i> 分配</a></li>-->
+<!--                                            <li><a href="/admin/menu"><i class="fa fa-circle-o"></i> 菜单</a></li>-->
+<!--                                        </ul>-->
+<!--                                    </li>-->
+<!--                                </ul>-->
+<!--                            </li>-->
+<!--                        </ul>-->
             <!-- sidebar menu end-->
         </div>
     </section>
